@@ -13,8 +13,8 @@ from nltk.tokenize import sent_tokenize
 
 from datetime import datetime
 
-speaker_king_or_not_words_file = '../data/categorized_words_speakers.txt'
-way_decision_filename = '../data/categorized_words_decisions.txt'
+speaker_king_or_not_words_file = 'data/categorized_words_speakers.txt'
+way_decision_filename = 'data/categorized_words_decisions.txt'
 
 speakers_set = set()
 len_last_words = 10
@@ -366,8 +366,8 @@ if __name__ == "__main__":
     way_word_decision = read_words_decisions()
     word_speaker_rule = load_quote_in_rule()
 
-    kor_root_path = "../data/pp_kor_docs_json/"
-    chi_root_path = "../data/pp_chi_docs_json/"
+    kor_root_path = "data/pp_kor_docs_json/"
+    chi_root_path = "data/pp_chi_docs_json/"
 
     king_code_name_file = "../data/king_code_name.txt"
     king_code = list()
