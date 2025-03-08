@@ -19,6 +19,7 @@ Run the `extract_decisions.py` script to extract the king's decisions using the 
 ### 3. Extracting Decisions Using GPT-4o Two-Shot Learning
 Use the `gpt-4o-two-shot.ipynb` Jupyter Notebook file to extract the king's decisions using GPT-4o two-shot learning.
 
+- You need to enter your OpenAI key in `YOUR_API_KEY` before using it. Please note that OpenAI charges for usage.
 - Run each cell in order.
 - After execution, a `.csv` file will be generated.
 - The **`gpt_answer`** column in the CSV file contains the final king’s decision.
