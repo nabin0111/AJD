@@ -207,9 +207,6 @@ def identify_decision_by_words_in_quote(kor_body, word_speaker_rule, target_word
                 if word_pattern.search(last_words) is not None:
                     candidate_category_list.append(category_tag)
 
-    # quote에 대해서만!
-    # 명령이 상당히 많기에 만약 명령이 아닌 것이 하나라도 나오면 명령을 제거하자
-    # -> 즉, order only가 아닌 경우를 여기서 거르는 것
     if 1 in candidate_category_list or 2 in candidate_category_list:
         candidate_count = Counter(candidate_category_list)
         candidate_category_list = list()
@@ -312,8 +309,6 @@ def filter_discussion_docs(kor_files_content, chi_files_content, way_word_decisi
                 temp = identify_decision_by_words_chi_body(chi_body_norm, way_word_decision[3], (way_word_decision[4], way_word_decision[5]))
                 candidate_list += temp
 
-            # 추가
-            # 본문에 quotation 이 있을 때만 확인
             if '&ldquo;' in kor_body:
                 candidate_from_quote, num_quote = identify_decision_by_words_in_quote(kor_body, word_speaker_rule, way_word_decision[10])
                 if final_cue == 'vote':
@@ -338,23 +333,14 @@ def filter_discussion_docs(kor_files_content, chi_files_content, way_word_decisi
                     if len(most_common_max) == 1:
                         max_candidate = most_common_max[0][0]
                     elif len(most_common_max) == 2 and most_common_max[1][0] == 1 and num_quote > 1:
-                        max_candidate = 1 # 0, 1 이 동점이고 인용절이 2개 이상일 때는 1이 더 우선됨
-                    else: # 대략 10만개의 결정 중 단 50개? 정도만이 동점에 해당하므로 그냥 무시
-                        max_candidate = '동점'
+                        max_candidate = 1
+                    else:
+                        max_candidate = 'tie'
                         # continue
-                else: # 해당 문서에서 왕의 결정을 찾아볼 수 없음
+                else:
                     continue
 
             return_list.append((each_kor_doc_name, len(candidate_list), max_candidate, candidate_from_quote, candidate_list, 'title' if final_cue == 'title' else 'vague'))
-
-            # if len(candidate_list) > 0:
-            #     candidate_count = Counter(candidate_list)
-            #     max_candidate = sorted(candidate_count.items(), key=lambda x: x[1], reverse=True)[0][0]
-
-            #     if max_candidate == 0 and num_quote > 1: # 0 = order only, 1 = agreement, 2 = disagreement, 3 = order + discussion (same with 1)
-            #         max_candidate = 3
-            # else:
-            #     continue
             
         except IndexError:
             print("Index Error in filter_discussion_docs function with {}".format(each_kor_doc_name), file=error_f)
