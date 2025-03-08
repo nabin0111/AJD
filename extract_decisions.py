@@ -355,7 +355,7 @@ if __name__ == "__main__":
     kor_root_path = "data/pp_kor_docs_json/"
     chi_root_path = "data/pp_chi_docs_json/"
 
-    king_code_name_file = "../data/king_code_name.txt"
+    king_code_name_file = "data/king_code_name.txt"
     king_code = list()
     with codecs.open(king_code_name_file, "r", "utf-8") as f:
         for line in f:
