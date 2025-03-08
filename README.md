@@ -4,7 +4,7 @@ This repository contains the implementation of our paper "Under the Mandate of H
 ## Instructions for Using the Dataset and Extracting the King's Decisions
 
 ### 1. Unzip the Data
-First, extract the contents of `data.zip` before proceeding.
+First, extract the contents of `data.zip` before proceeding. After extraction, the data files must be located in the `data` folder.
 
 ### 2. Extracting Decisions Using the Rule-Based Model
 Run the `extract_decisions.py` script to extract the king's decisions using the rule-based model.
