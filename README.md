@@ -1,5 +1,5 @@
 # AJD
-This repository contains the implementation of our paper "Under the Mandate of Heaven: A Historical Study of Omens and Executives"
+This repository is a work in progress and will include the full implementation of our paper "Under the Mandate of Heaven: A Historical Study of Omens and Executives" as it develops.
 
 ## Instructions for Using the Dataset and Extracting the King's Decisions
 
